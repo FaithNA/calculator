@@ -31,7 +31,7 @@ const divide = function(arr){
         }
         result /= arr[i];        
     }
-    return result;    
+    return result.toFixed(6);    
 }
 
 let firstNum;
@@ -124,3 +124,4 @@ function clearDisplay(){
 }
 
 clearDisplay();
+
