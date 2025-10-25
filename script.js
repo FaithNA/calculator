@@ -26,7 +26,7 @@ const divide = function(arr){
     
     let result = arr[0];
     for(let i=1; i<arr.length; i++){
-        if (arr[i] == 0){
+        if (arr[i] === 0){
             return 'ERROR';
         }
         result /= arr[i];        
@@ -44,18 +44,15 @@ const operate = function(num1, sign, num2){
         result = add([num1, num2]);
     }else if(sign == '-'){
         result = subtract([num1, num2]);
-    }else if(sign == '*'){
+    }else if(sign == '×'){
         result = multiply([num1, num2]);
-    }else if(sign == '/'){
+    }else if(sign == '÷'){
         result = divide([num1, num2]);
     }
+    console.log(result);
     return result;
 }
 
-console.log(add([3, 5, 7, 8]));
-console.log(multiply([3, 5, 7, 8]));
-console.log(subtract([15, 8, 2]));
-console.log(divide([15, 8, 2]));
 
 
 let numKeys = document.querySelectorAll(".dark-grey");
@@ -63,9 +60,6 @@ let display = document.querySelector(".display");
 display.setAttribute("style", "display:flex; flex-direction: row;");
 let clr = document.querySelector("#clear");
 
-console.log(display.textContent);
-
-numClicked = [];
 
 //Get numbers from clicks
 numKeyArr = Array.from(numKeys);
@@ -73,8 +67,6 @@ console.log(numKeyArr);
 numKeyArr.forEach(key =>{
     key.addEventListener("click", ()=>{
         console.log(key.textContent);
-        numClicked.push(key.textContent);
-        console.log(numClicked);
 
         display.textContent += key.textContent
 
@@ -108,6 +100,10 @@ opKeyArr.forEach(op =>{
 
         display.textContent = "";
         display.textContent += result;
+        firstNum = result;
+
+        //the next key clicked is a number not an operator, clear the display before putting the number
+        
 
     }
     });
@@ -122,50 +118,3 @@ function clearDisplay(){
 }
 
 clearDisplay();
-
-
-
-
-
-
-
-
-
-
-// class Person{
-//     constructor(name, age){
-//         this.name = name;
-//         this.age = age;
-//     }
-//     introduction(){
-//         console.log(`Hi, my name is ${this.name} and I am ${this.age} years old`);
-//     }
-// }
-// const person1 = new Person("Evans", 9);
-// const person2 = new Person("Roy", 12);
-
-// console.log(person2.introduction());
-
-
-
-
-
-// function Book(title, author, pages, readingStatus){
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.readingStatus = readingStatus;
-  
-// }
-
-// Book.prototype.giveInfo = function(){
-//     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.readingStatus}`
-// }
-   
-
-
-// const book1 =  new Book("The subtle art of not giving a f*ck", "Mark Robinson", 300, "Not read yet");
-
-
-// console.log(book1.giveInfo());
-// console.log(Object.getPrototypeOf(book1) === Book.prototype);
