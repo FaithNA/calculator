@@ -60,6 +60,7 @@ let display = document.querySelector(".display");
 display.setAttribute("style", "display:flex; flex-direction: row;");
 let clr = document.querySelector("#clear");
 
+let shouldClearDisplay = false;
 
 //Get numbers from clicks
 numKeyArr = Array.from(numKeys);
@@ -67,6 +68,11 @@ console.log(numKeyArr);
 numKeyArr.forEach(key =>{
     key.addEventListener("click", ()=>{
         console.log(key.textContent);
+
+        if (shouldClearDisplay) {
+            display.textContent = "";
+            shouldClearDisplay = false;
+        }
 
         display.textContent += key.textContent
 
@@ -102,7 +108,7 @@ opKeyArr.forEach(op =>{
         display.textContent += result;
         firstNum = result;
 
-        //the next key clicked is a number not an operator, clear the display before putting the number
+        shouldClearDisplay = true;
         
 
     }
